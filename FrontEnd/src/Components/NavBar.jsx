@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <div>
-      <nav>
-        <ul>
+    <div className="">
+      <nav className="">
+        <ul className="flex justify-between items-center">
           <li>
             <Link to="/">home</Link>
           </li>
@@ -13,7 +13,7 @@ const NavBar = () => {
             <Link to="/signin">signin</Link>
           </li>
           <li>
-            <Link to="/signout">signout</Link>
+            <Link to="/signup">signup</Link>
           </li>
           <li>
             <Link to="/todopage">todopage</Link>
