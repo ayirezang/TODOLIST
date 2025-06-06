@@ -97,7 +97,7 @@ const SignIn = () => {
             >
               Sign In
             </button>
-            <div className="grid grid-cols-3  items-center ">
+            <div className="grid grid-cols-3 mt-10 items-center text-gray-500 ">
               <hr className="border-gray-400" />
               <p className="text-xl text-center">OR</p>
               <hr className="border-gray-400" />
