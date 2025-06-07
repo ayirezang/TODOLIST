@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signUpApi } from "../api/api";
 
 const SignUp = () => {
-  const [username, setUsername] = useState("");
+  const [Username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   //usernmae
   const handleUsernameChange = (e) => {
@@ -21,15 +23,27 @@ const SignUp = () => {
     setPassword(e.target.value);
   };
   //prevent submit
-  const handleSubmit = (e) => {
+  const handleSignUpSubmit = async (e) => {
     e.preventDefault();
-    console.log(
-      `username: ${username}, Email: ${email}, Password: ${password}`
-    );
+    // console.log(
+    //   `username: ${username}, Email: ${email}, Password: ${password}`
+    // );
+    try {
+      await signUpApi(Username, email, password);
+      alert("signup successful!");
 
-    setUsername("");
-    setEmail("");
-    setPassword("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+
+      navigate("/todopage");
+      //
+    } catch (error) {
+      alert("sign up failed:" + error.message);
+      console.log(error);
+    }
+
+    //
   };
 
   return (
@@ -42,7 +56,11 @@ const SignUp = () => {
             <h1 className="font-bold text-4xl text-gray-800 mb-2">Welcome</h1>
             <p className="text-gray-600 text-lg">Enter your details</p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            autoComplete="off"
+            onSubmit={handleSignUpSubmit}
+            className="space-y-6"
+          >
             {/*username*/}
             <div>
               <label
@@ -57,8 +75,9 @@ const SignUp = () => {
                 name="username"
                 id="username"
                 placeholder="Enter your username"
-                value={username}
+                value={Username}
                 onChange={handleUsernameChange}
+                required
               ></input>
             </div>
             {/*email*/}
@@ -75,8 +94,9 @@ const SignUp = () => {
                 name="email"
                 id="email"
                 placeholder="Enter your email"
-                value={username}
+                value={email}
                 onChange={handleEmailChange}
+                required
               ></input>
             </div>
             {/*password*/}
@@ -88,13 +108,14 @@ const SignUp = () => {
                 Password
               </label>
               <input
-                type="text"
+                type="password"
                 className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#6A9ACA] focus:outline-none  bg-gray-50 focus:bg-white"
                 name="password"
                 id="password"
                 placeholder="Enter your password"
-                value={username}
+                value={password}
                 onChange={handlePasswordChange}
+                required
               ></input>
             </div>
             {/*check box remember*/}
@@ -141,8 +162,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
-  
-);
+  );
 };
 
 export default SignUp;

@@ -5,8 +5,8 @@ const NavBar = () => {
   return (
     <div className="">
       <nav className="">
-        <ul className="flex justify-between items-center">
-          <li>
+        <ul className="">
+          {/* <li>
             <Link to="/">home</Link>
           </li>
           <li>
@@ -17,7 +17,7 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/todopage">todopage</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </div>

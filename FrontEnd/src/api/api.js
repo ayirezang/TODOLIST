@@ -21,3 +21,15 @@ export const signUpApi = async (Username, email, password) => {
     throw new Error(error.response?.data?.message || "sign up failed");
   }
 };
+
+export const signInApi = async (email, password) => {
+  try {
+    const response = await api.post("/signin", { email, password });
+    Cookie.set("token", response.data.token, { expires: 5 });
+    return response.data;
+  } catch (error) {
+    console.error("sign in error:", error);
+    console.error("error response:", error.response);
+    throw new Error(error.response?.data?.message || "sign in failed");
+  }
+};

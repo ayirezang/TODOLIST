@@ -26,18 +26,22 @@ const FormTodo = ({ handleAddTask }) => {
   };
 
   return (
-    <div className="flex w-full  justify-center items-center">
-      <form className="flex w-full max-w-md" onSubmit={handleTaskSubmit}>
+    <div className="flex w-full  justify-center items-center ">
+      <form
+        autoComplete="off"
+        className="flex w-full max-w-md gap-4"
+        onSubmit={handleTaskSubmit}
+      >
         <input
           type="text"
           placeholder="Enter a task"
-          className="flex-grow border px-4 py-1  rounded-l outline-none focus:ring-2 focus:ring-blue-400"
+          className="flex-grow border px-4 py-2  rounded outline-none focus:ring-2 focus:ring-blue-400"
           value={task}
           onChange={handleTaskChange}
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600 transition-colors"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
         >
           Add task
         </button>

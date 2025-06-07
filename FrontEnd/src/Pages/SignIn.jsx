@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signInApi } from "../api/api";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   //email
   const handleEmailChange = (e) => {
@@ -15,12 +17,22 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
   //prevent submit
-  const handleSubmit = (e) => {
+  const handleSignInSubmit = async (e) => {
     e.preventDefault();
-    console.log(` Email: ${email}, Password: ${password}`);
 
-    setEmail("");
-    setPassword("");
+    try {
+      await signInApi(email, password);
+      alert("successful login");
+      setEmail("");
+      setPassword("");
+
+      //navigate
+      navigate("/todopage");
+    } catch (error) {
+      alert("sign in failed:" + error.message);
+      console.log(error);
+    }
+    // console.log(` Email: ${email}, Password: ${password}`);
   };
 
   return (
@@ -35,7 +47,11 @@ const SignIn = () => {
             </h1>
             <p className="text-gray-600 text-lg">Please enter your details</p>
           </div>
-          <form className="space-y-8" onSubmit={handleSubmit}>
+          <form
+            autoComplete="off"
+            className="space-y-8"
+            onSubmit={handleSignInSubmit}
+          >
             {/*email*/}
             <div>
               <label

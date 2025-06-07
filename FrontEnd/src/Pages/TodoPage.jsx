@@ -39,8 +39,8 @@ const TodoPage = () => {
   };
 
   return (
-    <div className="min-h-screen  flex flex-col justify-center items-center  py-10   ">
-      <div className="w-[600px] flex flex-col justify-center items-center  shadow-lg rounded-lg p-6">
+    <div className="min-h-screen  flex flex-col justify-center items-center  py-10 bg-gray-50  ">
+      <div className="w-full max-w-3xl flex flex-col justify-center items-center bg-white  shadow-2xl rounded-3xl p-6">
         <h1 className="mb-5 font-bold text-2xl">TODO LIST</h1>
         <FormTodo handleAddTask={handleAddTask} />
         <ListTask
