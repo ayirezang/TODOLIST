@@ -3,9 +3,21 @@ const bcrypt = require("bcryptjs");
 //authentication
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+const { validationResult } = require("express-validator");
 
 // //signup
 const signUp = async (req, res) => {
+  //validation checks
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    console.log(errors.array());
+
+    return res.status(400).json({
+      status: "error",
+      message: "Validation failed",
+      errors: errors.array(),
+    });
+  }
   const { Username, password, email } = req.body;
 
   try {

@@ -6,7 +6,7 @@ const NavBar = () => {
     <div className="">
       <nav className="">
         <ul className="">
-          {/* <li>
+          <li>
             <Link to="/">home</Link>
           </li>
           <li>
@@ -17,7 +17,7 @@ const NavBar = () => {
           </li>
           <li>
             <Link to="/todopage">todopage</Link>
-          </li> */}
+          </li>
         </ul>
       </nav>
     </div>
