@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInApi } from "../api/api";
 
 const SignIn = () => {
+<<<<<<< HEAD
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -44,10 +45,25 @@ const SignIn = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     value;
+=======
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  //email
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  //password
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+>>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
   };
   //prevent submit
   const handleSignInSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const validationErrors = validate();
     const hasErrors = Object.values(validationErrors).some(
       (error) => error !== ""
@@ -65,6 +81,14 @@ const SignIn = () => {
         email: "",
         password: "",
       });
+=======
+
+    try {
+      await signInApi(email, password);
+      alert("successful login");
+      setEmail("");
+      setPassword("");
+>>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
 
       //navigate
       navigate("/todopage");
@@ -106,12 +130,18 @@ const SignIn = () => {
                 name="email"
                 id="email"
                 placeholder="Enter your email"
+<<<<<<< HEAD
                 value={formData.email}
                 onChange={(e) => handleChanges(e)}
               ></input>
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
               )}
+=======
+                value={email}
+                onChange={handleEmailChange}
+              ></input>
+>>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
             </div>
             {/*password*/}
             <div>
@@ -127,12 +157,18 @@ const SignIn = () => {
                 name="password"
                 id="password"
                 placeholder="Enter your password"
+<<<<<<< HEAD
                 value={formData.password}
                 onChange={(e) => handleChanges(e)}
               ></input>
               {errors.password && (
                 <p className="text-red-500 text-sm mt-1">{errors.password}</p>
               )}
+=======
+                value={password}
+                onChange={handlePasswordChange}
+              ></input>
+>>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
             </div>
             {/*check box remember*/}
             <div className="flex justify-between  mb-4">

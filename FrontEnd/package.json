@@ -17,7 +17,10 @@
     "jsonwebtoken": "^9.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+<<<<<<< HEAD
     "react-hook-form": "^7.57.0",
+=======
+>>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.6.2",
     "uuid": "^11.1.0"
