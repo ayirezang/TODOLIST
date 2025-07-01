@@ -12,10 +12,17 @@ const createTodo = async (req, res) => {
   }
 };
 
+//retrieve
+
 const retrieveTodo = async (req, res) => {
   try {
-
-    
-  } catch (error) {}
+    const todo = await todoModel.find();
+    res.json(todo);
+  } catch (error) {
+    res.status(500).json({ message: "failed to fetch" });
+  }
 };
-module.exports = { createTodo };
+
+
+// 
+module.exports = { createTodo, retrieveTodo };
