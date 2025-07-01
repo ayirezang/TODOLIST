@@ -21,10 +21,7 @@ const ListTask = ({
             className="flex items-center w-full max-w-md gap-3  pb-2  "
           >
             <div className="bg-white flex justify-between w-full  shadow-md  px-4 py-2  cursor-pointer">
-<<<<<<< HEAD
-=======
               {" "}
->>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
               <span
                 onClick={() => toggleComplete(todo.id)}
                 className={`${todo.completed ? "line-through" : ""} text-xl `}

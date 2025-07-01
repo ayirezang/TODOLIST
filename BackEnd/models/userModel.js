@@ -15,6 +15,11 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

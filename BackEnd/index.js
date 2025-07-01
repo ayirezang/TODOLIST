@@ -3,10 +3,15 @@ const bodyParser = require("body-parser");
 const { mongoose } = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./routes/userRoutes");
+const todoRoutes = require("./routes/todoRoutes");
 const cors = require("cors");
 const server = express();
 server.use(cors());
-server.use(bodyParser.json());
+server.use(express.json());
+server.use(express.urlencoded({ extended: true }));
+
+server.use("/api", todoRoutes);
+
 server.use("/api", userRoutes);
 
 mongoose

@@ -11,13 +11,8 @@ router.post(
       .notEmpty()
       .withMessage("Username field required")
       .trim()
-<<<<<<< HEAD
-      .isLength({ min: 3, max: 15 })
-      .withMessage("Username must be between 3-15 characters"),
-=======
       .isLength({ min: 3, max: 40 })
       .withMessage("Username must be between 3-20 characters"),
->>>>>>> a63eea94ce0a41dd9121cedb9fd932cbd4eb36ef
     ,
     //password
     body("password")
