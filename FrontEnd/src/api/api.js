@@ -33,3 +33,15 @@ export const signInApi = async (email, password) => {
     throw new Error(error.response?.data?.message || "sign in failed");
   }
 };
+
+export const createTodoApi = async () => {
+  try {
+    const response = await api.post("/tasks", taskName);
+    return response.data;
+  } catch (error) {
+    console.error("creating error", error);
+    console.error("error response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data?.message || "creating task failed");
+  }
+};
