@@ -1,10 +1,13 @@
 const todoModel = require("../models/todoModel");
 // create
 const createTodo = async (req, res) => {
-  const { task, description } = req.body;
+  const { task } = req.body;
 
   try {
-    const todoDetails = new todoModel({ task, description });
+    const todoDetails = new todoModel({
+      task,
+      description: req.body.description || "",
+    });
     await todoDetails.save();
     res.status(201).json({ meg: "task successfully created" });
   } catch (error) {
@@ -26,18 +29,21 @@ const retrieveTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("updating with id", id);
+    const { task } = req.body;
+    // console.log("updating with id", id);
     //data from req body
-    const updateTodo = req.body;
-    const updatedTodo = await todoModel.findByIdAndUpdate(id, updateTodo, {
-      new: true,
-    });
+    // const updateTodo = req.body;
+    const updatedTodo = await todoModel.findByIdAndUpdate(
+      id,
+      { task },
+      {
+        new: true,
+      }
+    );
     if (!updatedTodo) {
       return res.status(404).json({ message: "not found" });
     }
-    return res
-      .status(200)
-      .json({ message: "updated successfully", data: updatedTodo });
+    return res.status(200).json(updatedTodo);
   } catch (error) {
     console.error("error:", error);
     return res

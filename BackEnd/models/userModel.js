@@ -18,7 +18,7 @@ const userSchema = new Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,

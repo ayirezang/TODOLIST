@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { createTodo } from "../api/api";
 
 const FormTodo = ({ handleAddTask }) => {
   const [task, setTask] = useState("");
@@ -9,20 +10,24 @@ const FormTodo = ({ handleAddTask }) => {
     setTask(e.target.value);
   };
   //handlesubmit
-  const handleTaskSubmit = (e) => {
+  const handleTaskSubmit = async (e) => {
     e.preventDefault();
     if (task.trim() === "") {
       return;
     }
-    let newTodo = {
+    const newTodo = {
       task: task,
       id: uuid(),
       completed: false,
       isEditing: false,
     };
-    handleAddTask(newTodo); //add inpu
-    // addTodo("Task added:", task);
-    setTask("");
+
+    try {
+      const createdTodo = await createTodo(newTodo);
+      handleAddTask(createdTodo); //add inpu
+      console.log(createdTodo);
+      setTask("");
+    } catch (error) {}
   };
 
   return (

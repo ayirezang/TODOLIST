@@ -16,12 +16,11 @@ const EditTask = ({ todo, handleUpdate }) => {
   const handleTaskSubmit = (e) => {
     e.preventDefault();
     if (edit.trim() === "") {
-      return;
+      // return;
     }
     handleUpdate(todo.id, edit);
   };
-  // let newTodo = { task: task, id: uuid() };
-  // (updatedTodo = newTodo.id), { todo: edit };
+
   return (
     <div className="flex w-full  justify-center items-center">
       <form className="flex w-full max-w-md gap-4" onSubmit={handleTaskSubmit}>
