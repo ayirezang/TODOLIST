@@ -40,12 +40,23 @@ export const signInApi = async (email, password) => {
 
 export const createTodo = async (task) => {
   try {
-    const response = await api.post("/tasks", taskName);
+    const response = await api.post("/tasks", task);
     return response.data;
   } catch (error) {
     console.error("creating error", error);
     console.error("error response", error.message);
     console.error("error Data", error.response?.data);
     throw new Error(error.response?.data?.message || "creating task failed");
+  }
+};
+export const retrieveTodo = async () => {
+  try {
+    const response = await api.get("/tasks");
+    return response.data;
+  } catch (error) {
+    console.error("creating error", error);
+    console.error("error response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data?.message || "updating task failed");
   }
 };

@@ -1,5 +1,19 @@
 const todoModel = require("../models/todoModel");
 // create
+// const createTodo = async (req, res) => {
+//   const { task } = req.body;
+
+//   try {
+//     const todoDetails = new todoModel({
+//       task,
+//       description: req.body.description || "",
+//     });
+//     await todoDetails.save();
+//     res.status(201).json({ meg: "task successfully created" });
+//   } catch (error) {
+//     res.status(500).json({ message: "server error", error });
+//   }
+// };
 const createTodo = async (req, res) => {
   const { task } = req.body;
 
@@ -8,8 +22,8 @@ const createTodo = async (req, res) => {
       task,
       description: req.body.description || "",
     });
-    await todoDetails.save();
-    res.status(201).json({ meg: "task successfully created" });
+    const savedTodo = await todoDetails.save();
+    res.status(201).json(savedTodo);
   } catch (error) {
     res.status(500).json({ message: "server error", error });
   }

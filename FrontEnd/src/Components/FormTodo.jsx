@@ -1,33 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { createTodo } from "../api/api";
+import { createTodo, retrieveTodo } from "../api/api";
 
 const FormTodo = ({ handleAddTask }) => {
   const [task, setTask] = useState("");
+
   //
   const handleTaskChange = (e) => {
     setTask(e.target.value);
   };
+
+  useEffect(() => {
+    const getTodo = async () => {
+      try {
+        const retrievedTodo = await retrieveTodo();
+        console.log(retrievedTodo);
+      } catch (error) {
+        console.error("Error:", error.response?.data || error.message);
+      }
+    };
+    getTodo();
+  }, []);
+
   //handlesubmit
   const handleTaskSubmit = async (e) => {
     e.preventDefault();
     if (task.trim() === "") {
       return;
     }
-    const newTodo = {
-      task: task,
-      id: uuid(),
-      completed: false,
-      isEditing: false,
-    };
+    // const newTodo = {
+    //   task: task,
+    //   id: uuid(),
+    //   completed: false,
+    //   isEditing: false,
+    // };
 
     try {
-      const createdTodo = await createTodo(newTodo);
+      const createdTodo = await createTodo({
+        task: task,
+        completed: false,
+      });
       handleAddTask(createdTodo); //add inpu
-      console.log(createdTodo);
+      // console.log(createdTodo);
+      // setTask("");
+      // const response = await createTodo(newTodo);
+      // console.log("backend response:", response);
+      // if (response.task) {
+      //   handleAddTask(response.task);
+      // }
       setTask("");
-    } catch (error) {}
+    } catch (error) {
+      console.log("error creating task", error);
+    }
   };
 
   return (
