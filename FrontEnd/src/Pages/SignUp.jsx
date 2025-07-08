@@ -192,7 +192,7 @@ const signUp = () => {
                 </label>
               </div>
               <div>
-                <a href="#" className="">
+                <a href="#" className="text-[#6A9ACA]">
                   Forgot password?
                 </a>
               </div>
@@ -207,7 +207,7 @@ const signUp = () => {
               <p className="">Already have an account?</p>
               <Link
                 to="/signin"
-                className="text-blue-600 hover:text-blue-800 font-semibold"
+                className="text-[#6A9ACA] hover:text-blue-800 font-semibold"
               >
                 Sign in
               </Link>

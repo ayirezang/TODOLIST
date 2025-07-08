@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
-import { createTodo, retrieveTodo } from "../api/api";
 
 const FormTodo = ({ handleAddTask }) => {
   const [task, setTask] = useState("");
@@ -10,18 +9,6 @@ const FormTodo = ({ handleAddTask }) => {
   const handleTaskChange = (e) => {
     setTask(e.target.value);
   };
-
-  useEffect(() => {
-    const getTodo = async () => {
-      try {
-        const retrievedTodo = await retrieveTodo();
-        console.log(retrievedTodo);
-      } catch (error) {
-        console.error("Error:", error.response?.data || error.message);
-      }
-    };
-    getTodo();
-  }, []);
 
   //handlesubmit
   const handleTaskSubmit = async (e) => {
@@ -36,23 +23,8 @@ const FormTodo = ({ handleAddTask }) => {
     //   isEditing: false,
     // };
 
-    try {
-      const createdTodo = await createTodo({
-        task: task,
-        completed: false,
-      });
-      handleAddTask(createdTodo); //add inpu
-      // console.log(createdTodo);
-      // setTask("");
-      // const response = await createTodo(newTodo);
-      // console.log("backend response:", response);
-      // if (response.task) {
-      //   handleAddTask(response.task);
-      // }
-      setTask("");
-    } catch (error) {
-      console.log("error creating task", error);
-    }
+    handleAddTask({ task: task, completed: false });
+    setTask("");
   };
 
   return (

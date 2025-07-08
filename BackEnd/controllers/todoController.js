@@ -43,17 +43,11 @@ const retrieveTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
-    const { task } = req.body;
-    // console.log("updating with id", id);
-    //data from req body
-    // const updateTodo = req.body;
-    const updatedTodo = await todoModel.findByIdAndUpdate(
-      id,
-      { task },
-      {
-        new: true,
-      }
-    );
+    // const { task } = req.body;
+
+    const updatedTodo = await todoModel.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
     if (!updatedTodo) {
       return res.status(404).json({ message: "not found" });
     }
@@ -69,7 +63,7 @@ const updateTodo = async (req, res) => {
 
 const deleteTodo = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { id } = req.params;
     console.log("deleting with id", id);
     const deletedTodo = await todoModel.findByIdAndDelete(id);
     if (!deletedTodo) {
@@ -78,7 +72,7 @@ const deleteTodo = async (req, res) => {
         .status(400)
         .json({ message: "todo not found", data: deletedTodo });
     }
-    console.log("successfully deleted", deleteTodo);
+    console.log("successfully deleted", deletedTodo);
     return res.json({ message: "deleted successfully", data: deletedTodo });
   } catch (error) {
     console.error("error:", error);

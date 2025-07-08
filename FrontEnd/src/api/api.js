@@ -54,9 +54,32 @@ export const retrieveTodo = async () => {
     const response = await api.get("/tasks");
     return response.data;
   } catch (error) {
-    console.error("creating error", error);
+    console.error("retrieving  error", error);
+    console.error("error response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data?.message || "retrieving task failed");
+  }
+};
+export const updateTodo = async (id, updatedData) => {
+  try {
+    const response = await api.put(`/tasks/${id}`, updatedData);
+    return response.data;
+  } catch (error) {
+    console.error("updating  error", error);
     console.error("error response", error.message);
     console.error("error Data", error.response?.data);
     throw new Error(error.response?.data?.message || "updating task failed");
+  }
+};
+
+export const deleteTodo = async (id) => {
+  try {
+    const response = await api.delete(`/tasks/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("deleting   error", error);
+    console.error("error response", error.message);
+    console.error("error Data", error.response?.data);
+    throw new Error(error.response?.data?.message || "deleting  task failed");
   }
 };

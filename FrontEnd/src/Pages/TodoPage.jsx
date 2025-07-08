@@ -1,28 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FormTodo from "../Components/FormTodo";
 import { v4 as uuidv4 } from "uuid";
 import ListTask from "../Components/ListTask";
+import { createTodo, retrieveTodo, updateTodo, deleteTodo } from "../api/api";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
-  //handle add
-  const handleAddTask = (newTodo) => {
-    setTodos((prev) => [...prev, newTodo]);
+
+  //
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const data = await retrieveTodo();
+        setTodos(
+          data.map((todo) => ({
+            ...todo,
+            id: todo._id.toString(),
+            isEditing: false,
+          }))
+        );
+        // setTodos(data);
+      } catch (error) {
+        console.error("Error:", error.response?.data || error.message);
+      }
+    };
+    fetchTodos();
+  }, []);
+  //handle add + api
+  const handleAddTask = async (newTodo) => {
+    try {
+      const createdTodo = await createTodo(newTodo);
+      setTodos((prev) => [
+        ...prev,
+        { ...createdTodo, id: createdTodo._id.toString() },
+      ]);
+    } catch (error) {
+      console.error("error: ", error.response?.data || error.message);
+    }
   };
   //mark complete
-  const toggleComplete = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
-    );
+  const toggleComplete = async (id) => {
+    try {
+      const todoToUpdate = todos.find((todo) => todo.id === id);
+      await updateTodo(id, {
+        ...todoToUpdate,
+        completed: !todoToUpdate.completed,
+      });
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, completed: !todo.completed } : todo
+        )
+      );
+    } catch (error) {
+      console.error("toggle error:", error);
+    }
   };
-  //delete todo
-
-  const deleteTodo = (id, newTodo) => {
-    setTodos(todos.filter((tasks) => tasks.id !== id)); //deleting task
-  };
-
   function editTodo(id) {
     setTodos(
       todos.map((todo) =>
@@ -30,14 +62,31 @@ const TodoPage = () => {
       )
     );
   }
-  const handleUpdate = (id, newTask) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, task: newTask, isEditing: false } : todo
-      )
-    );
+  //
+  const handleUpdate = async (id, newTask) => {
+    try {
+      await updateTodo(id, { task: newTask });
+      setTodos(
+        todos.map((todo) =>
+          todo.id === id ? { ...todo, task: newTask, isEditing: false } : todo
+        )
+      );
+    } catch (error) {
+      console.error("error updating:", error);
+    }
+  };
+  //delete todo with api
+
+  const handleDeleteTodo = async (id) => {
+    try {
+      await deleteTodo(id);
+      setTodos(todos.filter((tasks) => tasks.id !== id)); //deleting task
+    } catch (error) {
+      console.error("error deleting :", error);
+    }
   };
 
+  //
   return (
     <div className="min-h-screen  flex flex-col justify-center items-center  py-10 bg-gray-50  ">
       <div className="w-full max-w-3xl flex flex-col justify-center items-center bg-white  shadow-2xl rounded-3xl p-6">
@@ -47,7 +96,7 @@ const TodoPage = () => {
           todos={todos}
           handleAddTask={handleAddTask}
           toggleComplete={toggleComplete}
-          deleteTodo={deleteTodo}
+          handleDeleteTodo={handleDeleteTodo}
           editTodo={editTodo}
           handleUpdate={handleUpdate}
         />
