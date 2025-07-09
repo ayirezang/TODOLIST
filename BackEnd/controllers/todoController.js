@@ -1,19 +1,5 @@
 const todoModel = require("../models/todoModel");
-// create
-// const createTodo = async (req, res) => {
-//   const { task } = req.body;
 
-//   try {
-//     const todoDetails = new todoModel({
-//       task,
-//       description: req.body.description || "",
-//     });
-//     await todoDetails.save();
-//     res.status(201).json({ meg: "task successfully created" });
-//   } catch (error) {
-//     res.status(500).json({ message: "server error", error });
-//   }
-// };
 const createTodo = async (req, res) => {
   const { task } = req.body;
 

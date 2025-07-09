@@ -3,10 +3,11 @@ import FormTodo from "../Components/FormTodo";
 import { v4 as uuidv4 } from "uuid";
 import ListTask from "../Components/ListTask";
 import { createTodo, retrieveTodo, updateTodo, deleteTodo } from "../api/api";
+import { useNavigate } from "react-router-dom";
 
 const TodoPage = () => {
   const [todos, setTodos] = useState([]);
-
+  const navigate = useNavigate();
   //
   useEffect(() => {
     const fetchTodos = async () => {
@@ -88,18 +89,26 @@ const TodoPage = () => {
 
   //
   return (
-    <div className="min-h-screen  flex flex-col justify-center items-center  py-10 bg-gray-50  ">
-      <div className="w-full max-w-3xl flex flex-col justify-center items-center bg-white  shadow-2xl rounded-3xl p-6">
-        <h1 className="mb-5 font-bold text-2xl">TODO LIST</h1>
-        <FormTodo handleAddTask={handleAddTask} />
-        <ListTask
-          todos={todos}
-          handleAddTask={handleAddTask}
-          toggleComplete={toggleComplete}
-          handleDeleteTodo={handleDeleteTodo}
-          editTodo={editTodo}
-          handleUpdate={handleUpdate}
-        />
+    <div className="min-h-screen  relative bg-gray-50 p-4 ">
+      <button
+        onClick={() => navigate("/signout")}
+        className=" absolute top-4 right-4 px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-[#6A9ACA]"
+      >
+        signout
+      </button>
+      <div className="flex flex-col justify-center items-center ">
+        <div className="w-full max-w-3xl flex flex-col justify-center items-center bg-white  shadow-2xl rounded-3xl p-6 mt-44">
+          <h1 className="mb-5 font-bold text-2xl">TODO LIST</h1>
+          <FormTodo handleAddTask={handleAddTask} />
+          <ListTask
+            todos={todos}
+            handleAddTask={handleAddTask}
+            toggleComplete={toggleComplete}
+            handleDeleteTodo={handleDeleteTodo}
+            editTodo={editTodo}
+            handleUpdate={handleUpdate}
+          />
+        </div>
       </div>
     </div>
   );

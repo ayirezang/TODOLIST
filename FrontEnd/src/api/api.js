@@ -9,7 +9,7 @@ const api = axios.create({
     "Content-Type": "application/json",
   },
 });
-
+//signup
 export const signUpApi = async (Username, email, password) => {
   try {
     const response = await api.post("/signup", {
@@ -25,7 +25,7 @@ export const signUpApi = async (Username, email, password) => {
     throw new Error(error.response?.data?.message || "sign up failed");
   }
 };
-
+// signinApi
 export const signInApi = async (email, password) => {
   try {
     const response = await api.post("/signin", { email, password });
@@ -37,7 +37,19 @@ export const signInApi = async (email, password) => {
     throw new Error(error.response?.data?.message || "sign in failed");
   }
 };
-
+// signoutApi
+export const signOutApi = async (email, password) => {
+  try {
+    const response = await api.post("/signout", { email, password });
+    Cookie.set("token", response.data.token, { expires: 5 });
+    return response.data;
+  } catch (error) {
+    console.error("sign out error:", error);
+    console.error("error response:", error.response);
+    throw new Error(error.response?.data?.message || "sign out failed");
+  }
+};
+// createtodo
 export const createTodo = async (task) => {
   try {
     const response = await api.post("/tasks", task);

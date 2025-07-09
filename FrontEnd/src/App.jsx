@@ -3,7 +3,9 @@ import TodoPage from "./Pages/TodoPage";
 import SignIn from "./Pages/SignIn";
 import SignUp from "./Pages/SignUp";
 import NavBar from "./Components/NavBar";
+import SignOut from "./Pages/SignOut";
 import Home from "./Pages/Home";
+import Protected from "./Components/Protected";
 
 function App() {
   return (
@@ -13,7 +15,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/todopage" element={<TodoPage />} />
+        <Route
+          path="/todopage"
+          element={
+            <Protected>
+              <TodoPage />
+            </Protected>
+          }
+        />
+        <Route path="/signout" element={<SignOut />} />
       </Routes>
     </div>
   );
