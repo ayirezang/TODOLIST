@@ -7,8 +7,17 @@ const SignOut = () => {
 
   //prevent submit
   const handleSignOut = async (e) => {
-    await signOutApi();
-    navigate("/signin");
+    try {
+      await signOutApi();
+      navigate("/signin", {
+        state: {
+          message: "you have signed out successfully",
+          messageType: "success",
+        },
+      });
+    } catch (error) {
+      console.error("signed out failed:", error);
+    }
   };
 
   const handleCancel = () => {

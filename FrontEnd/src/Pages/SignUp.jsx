@@ -77,7 +77,7 @@ const signUp = () => {
 
     try {
       await signUpApi(formData.Username, formData.email, formData.password);
-      alert("signup successful!");
+      // alert("signup successful!");
 
       setFormData({
         Username: "",
