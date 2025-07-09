@@ -29,7 +29,7 @@ const SignOut = () => {
         <button
           onClick={handleSignOut}
           type="submit"
-          className=" bg-[#6A9ACA]  text-white font-semibold py-3 px-6 rounded-xl    hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          className=" bg-red-500  text-white font-semibold py-3 px-6 rounded-xl    hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200"
         >
           Sign Out
         </button>

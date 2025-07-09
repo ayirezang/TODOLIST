@@ -92,7 +92,7 @@ const TodoPage = () => {
     <div className="min-h-screen  relative bg-gray-50 p-4 ">
       <button
         onClick={() => navigate("/signout")}
-        className=" absolute top-4 right-4 px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-[#6A9ACA]"
+        className=" absolute top-4 right-4 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-[#6A9ACA]"
       >
         signout
       </button>
