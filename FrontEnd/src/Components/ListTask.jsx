@@ -1,6 +1,7 @@
 import React from "react";
-import { FaRegEdit } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
+
+import { VscEdit } from "react-icons/vsc";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 import EditTask from "./EditTask";
 //to be able to display he tasks
@@ -29,21 +30,20 @@ const ListTask = ({
               >
                 {todo.task}
               </span>
-              <div className="flex gap-2">
-                <FaRegEdit
-                  size={20}
+              <div className="flex gap-3">
+                <VscEdit
+                  size={24}
                   // className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
                   onClick={() => editTodo(todo.id)}
                 />
                 {/* Edit */}
-                {/* </button> */}
-                <AiOutlineDelete
-                  size={20}
+
+                <RiDeleteBin6Line
+                  size={24}
                   // className="bg-red-500 text-white font-bold py-2 px-4 rounded "
                   onClick={() => handleDeleteTodo(todo.id)}
                 />
                 {/* Delete */}
-                {/* </button> */}
               </div>
             </div>
           </div>
