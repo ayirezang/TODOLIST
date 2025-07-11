@@ -13,7 +13,7 @@ router.post(
       .trim()
       .isLength({ min: 3, max: 40 })
       .withMessage("Username must be between 3-20 characters"),
-    ,
+
     //password
     body("password")
       .isLength({ min: 8 })

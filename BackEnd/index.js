@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const bodyParser = require("body-parser");
+
 const { mongoose } = require("mongoose");
 require("dotenv").config();
 const userRoutes = require("./routes/userRoutes");
@@ -15,7 +15,7 @@ server.use(express.urlencoded({ extended: true }));
 server.use("/api", todoRoutes);
 
 server.use("/api", userRoutes);
-const __dirname = path.resolve();
+
 if (process.env.NODE_ENV === "production") {
   server.use(express.static(path.join(__dirname, "/frontend/dist")));
   server.get("*", (req, res) => {
