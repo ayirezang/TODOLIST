@@ -22,7 +22,7 @@ const ListTask = ({
             key={todo.id}
             className="flex items-center w-full max-w-md gap-3  pb-2  "
           >
-            <div className="bg-white flex justify-between w-full  shadow-md  px-4 py-2  cursor-pointer">
+            <div className="bg-white flex justify-between w-full  shadow-md  px-4 py-2  cursor-pointer text-xl">
               {" "}
               <span
                 onClick={() => toggleComplete(todo.id)}
