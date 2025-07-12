@@ -6,6 +6,7 @@ import NavBar from "./Components/NavBar";
 import SignOut from "./Pages/SignOut";
 import Home from "./Pages/Home";
 import Protected from "./Components/Protected";
+import Responsive from "./Pages/Responsive";
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
-        
+        <Route path="/responsive" element={<Responsive />} />
+
         <Route
           path="/todopage"
           element={

@@ -23,6 +23,9 @@ const SignOut = () => {
   const handleCancel = () => {
     navigate("/todopage");
   };
+  const handlenav = () => {
+    navigate("/responsive");
+  };
   return (
     <div className="bg-gray-50 min-h-screen p-4 ">
       <div className=" min-h-screen flex justify-center items-center space-x-6">
@@ -39,6 +42,12 @@ const SignOut = () => {
           className="text-white py-3 px-6 rounded-xl bg-[#6A9ACA] hover:sha hover:text-blue-800  shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 font-semibold"
         >
           Cancel
+        </button>
+        <button
+          onClick={handlenav}
+          className="text-white py-3 px-6 rounded-xl bg-[#6A9ACA] hover:sha hover:text-blue-800  shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 font-semibold"
+        >
+          nav
         </button>
       </div>
     </div>
