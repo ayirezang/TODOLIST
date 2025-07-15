@@ -28,7 +28,7 @@ const SignOut = () => {
   };
   return (
     <div className="bg-gray-50 min-h-screen p-4 md:p-8 ">
-      <div className=" min-h-screen flex justify-center items-center space-x-6">
+      <div className=" flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center min-h-screen">
         <button
           onClick={handleSignOut}
           type="submit"
@@ -39,13 +39,13 @@ const SignOut = () => {
 
         <button
           onClick={handleCancel}
-          className="text-white py-3 px-6 md:px-9 rounded-lg md:rounded-xl bg-[#6A9ACA] hover:text-blue-800  shadow-lg focus:outline-none focus:ring-2 md:focus-4 focus:ring-indigo-200 font-semibold"
+          className="text-white py-2 px-6 md:px-9 rounded-lg md:rounded-xl bg-blue-600 hover:text-blue-800  shadow-lg focus:outline-none focus:ring-2 md:focus-4 focus:ring-indigo-200 font-semibold"
         >
           Cancel
         </button>
         <button
           onClick={handlenav}
-          className="text-white py-3 px-6 md:px-9 rounded-lg md:rounded-xl bg-[#6A9ACA] hover:text-blue-800  shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 font-semibold"
+          className="text-white py-2 px-6 md:px-9 rounded-lg md:rounded-xl bg-blue-600 hover:text-blue-800  shadow-lg focus:outline-none focus:ring-4 focus:ring-indigo-200 font-semibold"
         >
           nav
         </button>
