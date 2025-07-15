@@ -92,9 +92,9 @@ const TodoPage = () => {
     <div className="min-h-screen  relative bg-gray-50 p-4 ">
       <button
         onClick={() => navigate("/signout")}
-        className=" absolute top-4 right-4 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-[#6A9ACA]"
+        className=" absolute top-4 right-4 px-4 py-2 lg:px-8  text-white bg-blue-600 rounded-md hover:bg-red-600"
       >
-        signout
+        Sign out
       </button>
       <div className="flex flex-col justify-center items-center ">
         <div className="w-full max-w-3xl flex flex-col justify-center items-center bg-white  shadow-2xl rounded-3xl p-6 mt-44">

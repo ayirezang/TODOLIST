@@ -215,7 +215,7 @@ const signUp = () => {
           </form>
         </div>
         {/**sign in  left*/}
-        <div className=" md:block hidden  md:w-1/2  ">
+        <div className=" md:block hidden  md:w-1/2   ">
           <div>
             <img src="Images/todo.jpg" alt="image" />
           </div>

@@ -20,27 +20,27 @@ const ListTask = ({
         ) : (
           <div
             key={todo.id}
-            className="flex items-center w-full max-w-md gap-3  pb-2  "
+            className="flex items-center w-full max-w-md lg:max-w-lg gap-3"
           >
-            <div className="bg-white flex justify-between w-full  shadow-md  px-4 py-2  cursor-pointer text-xl">
+            <div className="bg-white flex justify-between w-full shadow-sm sm:shadow-md px-4 py-2 lg:px-8 lg:py-4 cursor-pointer text-xl pb-2 lg:pb-4">
               {" "}
               <span
                 onClick={() => toggleComplete(todo.id)}
-                className={`${todo.completed ? "line-through" : ""} text-xl `}
+                className={`${
+                  todo.completed ? "line-through" : ""
+                } text-base sm:text-xl `}
               >
                 {todo.task}
               </span>
               <div className="flex gap-3">
                 <VscEdit
-                  size={24}
-                  // className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                   onClick={() => editTodo(todo.id)}
                 />
                 {/* Edit */}
 
                 <RiDeleteBin6Line
-                  size={24}
-                  // className="bg-red-500 text-white font-bold py-2 px-4 rounded "
+                  className="w-5 h-5 sm:w-6 sm:h-6"
                   onClick={() => handleDeleteTodo(todo.id)}
                 />
                 {/* Delete */}
