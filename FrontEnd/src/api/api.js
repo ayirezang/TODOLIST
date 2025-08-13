@@ -1,4 +1,4 @@
-import Cookie from "js-cookie";
+ import Cookie from "js-cookie";
 import axios from "axios";
 
 //set baseUrl for axios
