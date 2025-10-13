@@ -190,12 +190,12 @@ const SignIn = () => {
           </form>
         </div>
         {/**sign in  left*/}
-        <div className="hidden md:block md:w-1/2 relative">
+        <div className="hidden md:block md:w-1/2">
           <div>
             <img
               src="Images/todo.jpg"
               alt="image"
-              className="absolute inset-0 w-full h-full object-cover"
+              className=" inset-0 w-full h-full object-cover"
             />
           </div>
         </div>
