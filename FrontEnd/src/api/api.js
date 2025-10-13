@@ -1,10 +1,11 @@
- import Cookie from "js-cookie";
+import Cookie from "js-cookie";
 import axios from "axios";
 
 //set baseUrl for axios
 
 const api = axios.create({
-  baseURL: "http://127.0.0.1:4001/api",
+  baseURL: "https://todolist-production-e3cf.up.railway.app",
+  // baseURL: "http://127.0.0.1:4001/api",
   headers: {
     "Content-Type": "application/json",
   },
