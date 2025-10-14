@@ -16,12 +16,12 @@ server.use("/api", todoRoutes);
 
 server.use("/api", userRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  server.use(express.static(path.join(__dirname, "/frontend/dist")));
-  server.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
+// if (process.env.NODE_ENV === "production") {
+//   server.use(express.static(path.join(__dirname, "/frontend/dist")));
+//   server.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+//   });
+// }
 
 mongoose
   .connect(process.env.MONGO_DB)
