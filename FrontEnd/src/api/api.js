@@ -4,7 +4,7 @@ import axios from "axios";
 //set baseUrl for axios
 
 const api = axios.create({
-  baseURL: "https://todolist-production-e3cf.up.railway.app",
+  baseURL: "https://todolist-production-e3cf.up.railway.app/api",
   // baseURL: "http://127.0.0.1:4001/api",
   headers: {
     "Content-Type": "application/json",
