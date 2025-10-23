@@ -8,7 +8,9 @@ const userRoutes = require("./routes/userRoutes");
 const todoRoutes = require("./routes/todoRoutes");
 
 const server = express();
-server.use(cors());
+server.use(cors(
+  
+));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
