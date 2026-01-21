@@ -65,8 +65,8 @@ yarn dev
 
 This command will start both the frontend and backend servers concurrently using nodemon for automatic restarts on file changes.
 
-- Frontend will run on: `http://localhost:3000`
-- Backend will run on: `http://localhost:5000`
+ Frontend will run on: `http://localhost:3000`
+ Backend will run on: `http://localhost:5000`
 
 
 API Endpoints
