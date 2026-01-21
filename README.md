@@ -38,11 +38,12 @@ Installation
 Clone the repository:
 
 git clone https://github.com/ayirezang/todolist.git
+
 cd todolist-app
 
 Install dependencies for both client and server:
 
-bash# Install server dependencies
+# Install server dependencies
 cd backend
 yarn install
 
@@ -57,7 +58,7 @@ MONGODB_URI=mongodb://localhost:27017/todolist
 PORT=5000
 Running the Application
 Start the development server with hot-reloading:
-bashyarn dev
+yarn dev
 ```
 
 This command will start both the frontend and backend servers concurrently using nodemon for automatic restarts on file changes.
