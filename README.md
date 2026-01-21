@@ -65,20 +65,7 @@ This command will start both the frontend and backend servers concurrently using
 - Frontend will run on: `http://localhost:3000`
 - Backend will run on: `http://localhost:5000`
 
-## Project Structure
-```
-todolist-app/
-├── frontend/              # React frontend
-│   ├── src/
-│   ├── public/
-│   └── package.json
-├──backend/              # Express backend
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── server.js
-│   └── package.json
-└── README.md
+
 API Endpoints
 
 GET /api/todos - Get all todos
