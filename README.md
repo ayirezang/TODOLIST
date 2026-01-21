@@ -45,10 +45,12 @@ Install dependencies for both client and server:
 
 # Install server dependencies
 cd backend
+
 yarn install
 
 # Install client dependencies
 cd ../frontend
+
 yarn install
 ```
 
